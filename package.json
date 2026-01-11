@@ -1,0 +1,33 @@
+{
+  "name": "cryptopunk-match",
+  "version": "1.0.0",
+  "description": "A matching game featuring CryptoPunks",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "download": "node scripts/download-punks.js",
+    "download:metadata": "node scripts/download-metadata.js",
+    "download:traits": "node scripts/download-traits.js",
+    "slice": "node scripts/slice-punks.js",
+    "setup": "npm run download && npm run slice && npm run download:metadata",
+    "setup:all": "npm run setup && npm run download:traits"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^2.1.0",
+    "@tanstack/react-query": "^5.51.0",
+    "@upstash/redis": "^1.31.0",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "sharp": "^0.33.2",
+    "viem": "^2.17.0",
+    "wagmi": "^2.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

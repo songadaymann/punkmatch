@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Debug
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large source files (regenerate with npm run setup)
+punks.png
+punks-metadata.csv
+
+# Note: public/punks/ and public/traits/ are included for deployment
+# They can be regenerated with: npm run setup:all
