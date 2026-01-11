@@ -242,7 +242,7 @@ export function Game() {
       // Score = moves * 10000 + time (lower is better)
       const score = moves * 10000 + seconds;
 
-      const res = await fetch('https://mann.cool/api/leaderboard', {
+      const res = await fetch('https://www.mann.cool/api/leaderboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

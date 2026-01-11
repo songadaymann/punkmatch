@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const LEADERBOARD_API = 'https://mann.cool/api/leaderboard';
+const LEADERBOARD_API = 'https://www.mann.cool/api/leaderboard';
 
 interface LeaderboardEntry {
   rank?: number;
