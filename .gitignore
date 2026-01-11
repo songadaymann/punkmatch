@@ -31,3 +31,7 @@ punks-metadata.csv
 
 # Note: public/punks/ and public/traits/ are included for deployment
 # They can be regenerated with: npm run setup:all
+
+# Human materials (source WAVs, etc)
+human-materials-ignore/
+*.wav

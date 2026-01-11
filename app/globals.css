@@ -60,11 +60,32 @@ h1 {
   align-items: center;
 }
 
+.header-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .header-wallet {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* Music toggle button */
+.music-toggle {
+  font-size: 1.8rem;
+  background: transparent;
+  border: 2px solid var(--pink);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.music-toggle:hover {
+  background: var(--pink);
 }
 
 /* Controls */

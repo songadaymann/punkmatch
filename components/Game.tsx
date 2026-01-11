@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Leaderboard } from './Leaderboard';
 import { FloatingPunks } from './FloatingPunks';
+import { MusicPlayer } from './MusicPlayer';
 
 const TOTAL_PUNKS = 10000;
 
@@ -278,6 +279,9 @@ export function Game() {
 
       <div className="container">
         <div className="header">
+          <div className="header-left">
+            <MusicPlayer />
+          </div>
           <div className="header-center">
             <h1>punk. match.</h1>
             <div className="subtitle">10,000 cryptopunks. one memory.</div>
