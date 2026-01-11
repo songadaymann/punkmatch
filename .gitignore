@@ -35,3 +35,6 @@ punks-metadata.csv
 # Human materials (source WAVs, etc)
 human-materials-ignore/
 *.wav
+
+# Static export (regenerate with npm run build:static)
+out/

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "cp next.config.js next.config.backup.js && cp next.config.export.js next.config.js && next build && cp next.config.backup.js next.config.js && rm next.config.backup.js",
     "start": "next start",
     "download": "node scripts/download-punks.js",
     "download:metadata": "node scripts/download-metadata.js",
