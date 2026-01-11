@@ -238,15 +238,20 @@ export function Game() {
 
     setSubmitting(true);
     try {
-      const res = await fetch('/api/leaderboard', {
+      // Score = moves * 10000 + time (lower is better)
+      const score = moves * 10000 + seconds;
+
+      const res = await fetch('https://mann.cool/api/leaderboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          game: 'punkmatch',
+          variant: `${gridSize}x${gridSize}`,
           address,
           name: playerName.trim(),
-          moves: moves,
+          score,
+          moves,
           time: seconds,
-          gridSize,
         }),
       });
 

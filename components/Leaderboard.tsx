@@ -1,7 +1,18 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { LeaderboardEntry } from '@/lib/redis';
+
+const LEADERBOARD_API = 'https://mann.cool/api/leaderboard';
+
+interface LeaderboardEntry {
+  rank?: number;
+  address: string | null;
+  name: string;
+  score: number;
+  time?: number;
+  moves?: number;
+  timestamp: number;
+}
 
 interface LeaderboardProps {
   gridSize: number;
@@ -21,14 +32,12 @@ export function Leaderboard({ gridSize }: LeaderboardProps) {
     async function fetchLeaderboard() {
       setLoading(true);
       try {
-        const res = await fetch(`/api/leaderboard?gridSize=${gridSize}&limit=10`);
+        const res = await fetch(
+          `${LEADERBOARD_API}?game=punkmatch&variant=${gridSize}x${gridSize}&limit=10`
+        );
         const data = await res.json();
         if (data.success) {
-          // Parse entries (they come as JSON strings from Redis)
-          const parsed = data.entries.map((e: string | LeaderboardEntry) =>
-            typeof e === 'string' ? JSON.parse(e) : e
-          );
-          setEntries(parsed);
+          setEntries(data.entries || []);
         }
       } catch (e) {
         console.error('Failed to fetch leaderboard:', e);
@@ -72,10 +81,10 @@ export function Leaderboard({ gridSize }: LeaderboardProps) {
         </div>
         {entries.map((entry, i) => (
           <div key={i} className="leaderboard-row">
-            <span className="rank">{i + 1}</span>
+            <span className="rank">{entry.rank || i + 1}</span>
             <span className="name">{entry.name}</span>
-            <span className="moves">{entry.moves}</span>
-            <span className="time">{formatTime(entry.time)}</span>
+            <span className="moves">{entry.moves ?? entry.score}</span>
+            <span className="time">{formatTime(entry.time || 0)}</span>
           </div>
         ))}
       </div>
