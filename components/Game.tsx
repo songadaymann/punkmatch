@@ -345,14 +345,38 @@ export function Game() {
         {/* Win Modal */}
         {showWinModal && (
           <div className="modal-overlay" onClick={() => !submitting && setShowWinModal(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
-              <h2>matched.</h2>
-              <p>
-                moves: <span>{moves}</span>
-              </p>
-              <p>
-                time: <span>{formatTime(seconds)}</span>
-              </p>
+            <div className="modal victory-card" onClick={(e) => e.stopPropagation()}>
+              <div className="victory-header">
+                <h2>punk. match.</h2>
+                <div className="victory-subtitle">matched.</div>
+              </div>
+
+              {/* Mini game board */}
+              <div
+                className="victory-board"
+                style={{
+                  gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+                  '--card-size': gridSize <= 4 ? '48px' : gridSize <= 6 ? '36px' : gridSize <= 8 ? '28px' : '18px',
+                } as React.CSSProperties}
+              >
+                {cards.map((card, i) => (
+                  <div key={i} className="victory-card-cell">
+                    <img
+                      src={`/punks/${card.punkId}.png`}
+                      alt={`Punk #${card.punkId}`}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="victory-stats">
+                <span>
+                  moves: <span>{moves}</span>
+                </span>
+                <span>
+                  time: <span>{formatTime(seconds)}</span>
+                </span>
+              </div>
 
               {!submitted ? (
                 <>
@@ -395,9 +419,9 @@ export function Game() {
                 </>
               ) : (
                 <>
-                  <p>
+                  <div className="victory-rank">
                     rank: <span>#{rank}</span>
-                  </p>
+                  </div>
                   <div className="modal-buttons">
                     <button className="btn" onClick={initGame}>
                       play again
